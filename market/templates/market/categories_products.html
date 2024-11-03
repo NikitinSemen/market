@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_categories.name }} :: Доска объявлений</title>
+</head>
+<body>
+<h1>Объявления</h1>
+<h2>Рубрика:{{ current_categories.name}}</h2>
+<div>
+    <a href="{% url 'market:products' %}">Главная</a>
+    {% for category in categories %}
+    <a href="{% url 'market:categories_product' category.id %}">{{ category.name }}</a>
+    {% endfor %}
+</div>
+{% for product in products %}
+<div>
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }}</p>
+</div>
+{% endfor %}
+</body>
+</html>
